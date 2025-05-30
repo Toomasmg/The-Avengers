@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Editar Avenger</h2>
+<form method="POST" action="{{ url_for('avenger_bp.update_avenger', id=avenger.id) }}">
+    <div class="mb-3">
+        <label>Nombre</label>
+        <input type="text" name="name" class="form-control" value="{{ avenger.name }}" required>
+    </div>
+    <div class="mb-3">
+        <label>Alias</label>
+        <input type="text" name="alias" class="form-control" value="{{ avenger.alias }}" required>
+    </div>
+    <div class="mb-3">
+        <label>Habilidades (una por línea)</label>
+        <textarea name="abilities" class="form-control" rows="3" required>{{ avenger.abilities | from_json | join('\n') }}</textarea>
+    </div>
+    <div class="mb-3">
+        <label>Actor</label>
+        <input type="text" name="actor" class="form-control" value="{{ avenger.actor }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+    <a href="{{ url_for('avenger_bp.list_avengers') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Nuevo Avenger</h2>
+<form method="POST" action="{{ url_for('avenger_bp.create_avenger') }}">
+    <div class="mb-3">
+        <label>Nombre</label>
+        <input type="text" name="name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Alias</label>
+        <input type="text" name="alias" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Habilidades (una por línea)</label>
+        <textarea name="abilities" class="form-control" rows="3" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label>Actor</label>
+        <input type="text" name="actor" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a href="{{ url_for('avenger_bp.list_avengers') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

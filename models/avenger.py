@@ -9,7 +9,8 @@ class Avenger(db.Model):
     name = db.Column(db.String(100), nullable=False)        
     alias = db.Column(db.String(100), nullable=False)       
     abilities = db.Column(db.Text, nullable=False)          
-    actor = db.Column(db.String(100), nullable=False)       
+    actor = db.Column(db.String(100), nullable=False) 
+          
     def __repr__(self):
         return f"<Avenger {self.alias} ({self.name})>"
 
