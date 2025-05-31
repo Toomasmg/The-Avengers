@@ -11,13 +11,12 @@ def list_avengers():
     avengers = Avenger.query.all()
     for avenger in avengers:
         avenger.abilities = json.loads(avenger.abilities) if avenger.abilities else []
-    return render_template("avengers/list.html", avengers=avengers)
-
+    return render_template("avenger/avengers.html", avengers=avengers)
 
 # Mostrar formulario para agregar un nuevo Avenger
 @avenger_bp.route("/avengers/new")
 def new_avenger():
-    return render_template("avengers/new.html")
+    return render_template("avenger/add_avenger.html")
 
 # Crear un nuevo Avenger
 @avenger_bp.route("/avengers/create", methods=["POST"])
@@ -38,11 +37,11 @@ def create_avenger():
         return redirect(url_for("avenger_bp.new_avenger"))
 
 # Mostrar formulario para editar un Avenger existente
-@avenger_bp.route("/avengers/edit/<int:id>")
+@avenger_bp.route("/avengers/edit/<string:id>")
 def edit_avenger(id):
     avenger = Avenger.query.get_or_404(id)
     avenger.abilities = json.loads(avenger.abilities) if avenger.abilities else []
-    return render_template("avengers/edit.html", avenger=avenger)
+    return render_template("avenger/edit_avenger.html", avenger=avenger)
 
 # Actualizar los datos del Avenger
 @avenger_bp.route("/avengers/update/<string:id>", methods=["POST"])

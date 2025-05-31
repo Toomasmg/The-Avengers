@@ -13,7 +13,7 @@
     </div>
     <div class="mb-3">
         <label>Habilidades (una por línea)</label>
-        <textarea name="abilities" class="form-control" rows="3" required>{{ avenger.abilities | from_json | join('\n') }}</textarea>
+        <textarea name="abilities" class="form-control" rows="3" required>{{ avenger.abilities | join('\n') }}</textarea>
     </div>
     <div class="mb-3">
         <label>Actor</label>
@@ -23,3 +23,5 @@
     <a href="{{ url_for('avenger_bp.list_avengers') }}" class="btn btn-secondary">Cancelar</a>
 </form>
 {% endblock %}
+
+

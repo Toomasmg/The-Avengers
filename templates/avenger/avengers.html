@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Lista de Avengers</h2>
+
+    <a href="{{ url_for('avenger_bp.new_avenger') }}" class="btn btn-success mb-3">Agregar Avenger</a>
+
+    <div class="list-group">
+        {% for avenger in avengers %}
+        <div class="list-group-item">
+            <h5 class="mb-1">{{ avenger.name }} ({{ avenger.alias }})</h5>
+            <p class="mb-1"><strong>Actor:</strong> {{ avenger.actor }}</p>
+            <p class="mb-1"><strong>Habilidades:</strong></p>
+            <ul>
+                {% for ability in avenger.abilities %}
+                    <li>{{ ability }}</li>
+                {% endfor %}
+            </ul>
+            <a href="{{ url_for('avenger_bp.edit_avenger', id=avenger.id) }}" class="btn btn-primary btn-sm">Editar</a>
+            <a href="{{ url_for('avenger_bp.delete_avenger', id=avenger.id) }}" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar Avenger?');">Eliminar</a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">Volver al inicio</a>
+</div>
+{% endblock %}

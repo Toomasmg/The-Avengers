@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Registrar Nuevo Avenger</h2>
+<form method="POST" action="{{ url_for('avenger_bp.create_avenger') }}">
+    <div class="mb-3">
+        <label for="name">Nombre</label>
+        <input type="text" name="name" id="name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="alias">Alias</label>
+        <input type="text" name="alias" id="alias" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="abilities">Habilidades (una por línea)</label>
+        <textarea name="abilities" id="abilities" class="form-control" rows="3" required></textarea>
+        <!-- Esto luego se divide por línea en el backend para convertir en JSON -->
+    </div>
+    <div class="mb-3">
+        <label for="actor">Actor</label>
+        <input type="text" name="actor" id="actor" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a href="{{ url_for('avenger_bp.list_avengers') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
